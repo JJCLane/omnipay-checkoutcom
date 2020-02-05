@@ -9,7 +9,7 @@ class AbstractResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('CompletePurchaseSuccess.txt');
-        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new AbstractResponse($this->getMockRequest(), $httpResponse->getBody()->getContents());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());

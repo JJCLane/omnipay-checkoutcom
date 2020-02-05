@@ -9,7 +9,7 @@ class PurchaseResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-        $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new PurchaseResponse($this->getMockRequest(), $httpResponse->getBody()->getContents());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertTrue($response->isRedirect());

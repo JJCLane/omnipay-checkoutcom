@@ -10,18 +10,18 @@ class PurchaseRequestTest extends TestCase
     {
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->initialize(
-            array(
+            [
                 'amount' => '12.00',
                 'currency' => 'uSd',
                 'description' => 'Order #42',
-                'metadata' => array(
+                'metadata' => [
                     'foo' => 'bar',
-                ),
-                'udf' => array(
+                ],
+                'udf' => [
                     'first' => 'lorem',
                     'second' => 'ipsum'
-                )
-            )
+                ]
+            ]
         );
     }
 

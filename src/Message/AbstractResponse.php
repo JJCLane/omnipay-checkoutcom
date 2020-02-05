@@ -5,6 +5,8 @@
 
 namespace Omnipay\CheckoutCom\Message;
 
+use Omnipay\Common\Message\RequestInterface;
+
 /**
  * CheckoutCom Response
  *
@@ -14,6 +16,15 @@ namespace Omnipay\CheckoutCom\Message;
  */
 class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
 {
+    protected $data;
+
+    public function __construct(RequestInterface $request, $encodedContent)
+    {
+        parent::__construct($request, $encodedContent);
+
+        $this->data = json_decode($encodedContent, true);
+    }
+
     /**
      * Get a token, for createCard requests.
      *

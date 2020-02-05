@@ -48,7 +48,7 @@ class PurchaseRequest extends AbstractRequest
     {
         $httpResponse = $this->sendRequest($data);
 
-        return $this->response = new PurchaseResponse($this, $httpResponse->json());
+        return $this->response = new PurchaseResponse($this, json_encode($httpResponse));
     }
 
     public function getEndpoint()

@@ -109,29 +109,13 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function sendRequest($data)
     {
-        // don't throw exceptions for 4xx errors
-        $this->httpClient->getEventDispatcher()->addListener(
-            'request.error',
-            function ($event) {
-                if ($event['response']->isClientError()) {
-                    $event->stopPropagation();
-                }
-            }
-        );
+        $response = $this->httpClient->request($this->getHttpMethod(), $this->getEndpoint(), [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json;charset=UTF-8',
+            'Authorization'=> $this->getSecretApiKey()
+        ], empty($data) ? json_encode($data) : null);
 
-        $httpRequest = $this->httpClient->createRequest(
-            $this->getHttpMethod(),
-            $this->getEndpoint(),
-            null,
-            !empty($data) ? json_encode($data) : null
-        );
-
-        $httpRequest
-            ->setHeader('Content-Type', 'application/json;charset=UTF-8')
-            ->setHeader('Accept', 'application/json')
-            ->setHeader('Authorization', $this->getSecretApiKey());
-
-        return $httpRequest->send();
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
