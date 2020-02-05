@@ -9,7 +9,7 @@ class CardTokenPurchaseResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('CardTokenPurchaseSuccess.txt');
-        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->getBody()->getContents());
 
         $this->assertTrue($response->isSuccessful());
         $this->assertSame('charge_test_DD0BF9EC548R752B79E2', $response->getTransactionReference());
@@ -19,7 +19,7 @@ class CardTokenPurchaseResponseTest extends TestCase
     public function testPurchaseFailure()
     {
         $httpResponse = $this->getMockHttpResponse('CardTokenPurchaseFailure.txt');
-        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->getBody()->getContents());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertSame('charge_test_EE0E09FC548L752B6C12', $response->getTransactionReference());
@@ -29,7 +29,7 @@ class CardTokenPurchaseResponseTest extends TestCase
     public function testPurchaseFailureValidation()
     {
         $httpResponse = $this->getMockHttpResponse('CardTokenPurchaseFailureValidation.txt');
-        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->json());
+        $response = new CardTokenPurchaseResponse($this->getMockRequest(), $httpResponse->getBody()->getContents());
 
         $this->assertFalse($response->isSuccessful());
         $this->assertNull($response->getTransactionReference());
