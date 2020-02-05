@@ -2,9 +2,7 @@
 
 **Checkout.com driver for the Omnipay PHP payment processing library**
 
-[![Build Status](https://travis-ci.org/fotografde/omnipay-checkoutcom.png?branch=master)](https://travis-ci.org/fotografde/omnipay-checkoutcom)
-[![Latest Stable Version](https://poser.pugx.org/fotografde/omnipay-checkoutcom/v/stable)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
-[![Total Downloads](https://poser.pugx.org/fotografde/omnipay-checkoutcom/downloads)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
+
 [![License](https://poser.pugx.org/fotografde/omnipay-checkoutcom/license)](https://packagist.org/packages/fotografde/omnipay-checkoutcom)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
@@ -18,7 +16,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "fotografde/omnipay-checkoutcom": "~2.0"
+        "beganovich/omnipay-checkoutcom": "~3.0"
     }
 }
 ```
