@@ -1,7 +1,7 @@
 {
-  "name": "fotografde/omnipay-checkoutcom",
+  "name": "beganovich/omnipay-checkoutcom",
   "type": "library",
-  "description": "Checkout.com driver for the Omnipay payment processing library",
+  "description": "Checkout.com driver for Omnipay package",
   "keywords": [
     "gateway",
     "merchant",
@@ -10,7 +10,7 @@
     "payment",
     "checkoutcom"
   ],
-  "homepage": "https://github.com/fotografde/omnipay-checkoutcom",
+  "homepage": "https://github.com/beganovich/omnipay-checkoutcom",
   "license": "MIT",
   "authors": [
     {
