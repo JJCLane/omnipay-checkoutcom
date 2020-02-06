@@ -25,19 +25,32 @@ class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
         $this->data = json_decode($encodedContent, true);
     }
 
-    /**
-     * Get a token, for createCard requests.
-     *
-     * @return string|null
-     */
     public function getTransactionReference()
     {
-        if (isset($this->data['id'])) {
-            return $this->data['id'];
+        if (isset($this->data['reference'])) {
+            return $this->data['reference'];
         }
 
         return null;
 
+    }
+
+    public function getRequestId()
+    {
+        if (isset($this->data['request_id'])) {
+            return $this->data['request_id'];
+        }
+
+        return null;
+    }
+
+    public function getErrorType()
+    {
+        if (isset($this->data['error_type'])) {
+            return $this->data['error_type'];
+        }
+
+        return null;
     }
 
     /**
