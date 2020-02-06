@@ -45,6 +45,6 @@ class CardTokenPurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/charges/token';
+        return parent::getEndpoint() . '/tokens';
     }
 }

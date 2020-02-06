@@ -53,6 +53,6 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/tokens/payment';
+        return parent::getEndpoint() . '/payments';
     }
 }

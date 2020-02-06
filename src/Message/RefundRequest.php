@@ -24,6 +24,6 @@ class RefundRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/payments/' . $this->getTransactionId() . '/refunds/';
+        return parent::getEndpoint() . '/payments/' . $this->getTransactionReference() . '/refunds/';
     }
 }
