@@ -31,6 +31,10 @@ class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
             return $this->data['reference'];
         }
 
+        if (isset($this->data['id'])) {
+            return $this->data['id'];
+        }
+
         return null;
 
     }
