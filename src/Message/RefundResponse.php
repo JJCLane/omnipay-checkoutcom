@@ -11,6 +11,14 @@ class RefundResponse extends AbstractResponse implements RedirectResponseInterfa
 
     public function isSuccessful()
     {
+        if (!empty($this->data['errorCode'])) {
+            return false;
+        }
+
+        if (!empty($this->data['status'])) {
+            return ($this->data['status'] == 'Refunded');
+        }
+
         return false;
     }
 
@@ -24,11 +32,17 @@ class RefundResponse extends AbstractResponse implements RedirectResponseInterfa
         return 'GET';
     }
 
-    public function getRedirectUrl()
+    public function getMessage()
     {
-        if ($this->isRedirect()) {
-            return 'placeholder';
+        if (!$this->isSuccessful() && isset($this->data['errorCode'])) {
+            return $this->data['errorCode'] . ': ' . $this->data['message'];
         }
+
+        if (!$this->isSuccessful() && isset($this->data['responseCode'])) {
+            return $this->data['responseCode'] . ': ' . $this->data['responseMessage'];
+        }
+
+        return null;
     }
 
     public function getRedirectData()
